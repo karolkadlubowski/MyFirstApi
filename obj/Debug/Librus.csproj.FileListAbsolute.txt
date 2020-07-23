@@ -36,3 +36,4 @@ D:\Studia\Projekty\librus\obj\Debug\Librus.csproj.CoreCompileInputs.cache
 D:\Studia\Projekty\librus\obj\Debug\Librus.csproj.CopyComplete
 D:\Studia\Projekty\librus\obj\Debug\Librus.exe
 D:\Studia\Projekty\librus\obj\Debug\Librus.pdb
+D:\Studia\Projekty\librus\obj\Debug\Librus.forms.LibrusPanel.resources

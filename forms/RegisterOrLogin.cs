@@ -1,79 +1,84 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Librus.data;
+using Librus.models;
+using Librus.services;
+using StudentManager.Services;
 
 namespace Librus.forms
 {
     public partial class RegisterOrLogin : Form
     {
+        private readonly IPanelService panelService;
+
+        private readonly IAuthService authService;
+
+        private readonly INavigationService navigationService;
+
         public RegisterOrLogin()
         {
+            this.panelService = new PanelService();
+            this.authService = new AuthService();
+            this.navigationService = new NavigationService();
             InitializeComponent();
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
-        {
-            string username, password;
-            panelService(out username,out password);
-            var loginButton = AddNewButton(80, 0, "Zaloguj");
-            
-        }
+        private TextBox loginBox { get; set; }
+        private TextBox passwordBox { get; set; }
+        private Button confirmButton { get; set; }
+        private ComboBox subjectBox { get; set; }
 
-        private void registerButton_Click(object sender, EventArgs e)
-        {
-            string username, password;
-            panelService(out username, out password);
-            
-        }
-
-        private void panelService(out string username,out string password)
+        private void loginButton_Click_1(object sender, EventArgs e)
         {
             loginButton.Dispose();
             registerButton.Dispose();
-            AddNewLabel(10, 10, "Podaj dane:");
-            //AddNewLabel(40, 10, "Login:");
-            //AddNewLabel(70, 10, "Haslo:");
-            var loginBox = AddNewTextBox(30, 0, "Login");
-            //System.Windows.Forms.TextBox password = AddNewTextBox(70, 0, "Haslo");
-            var passwordBox = AddNewTextBox(55, 0, "Haslo");
-            username = loginBox.Text;
-            password = passwordBox.Text;
+            panelService.AddNewLabel(10, 10, "Podaj dane:", this);
+            loginBox = panelService.AddNewTextBox(40, 0, "Login", this);
+            passwordBox = panelService.AddNewTextBox(70, 0, "Haslo", this);
+            confirmButton = panelService.AddNewButton(100, 0, "Zaloguj", this);
         }
 
-        public System.Windows.Forms.Label AddNewLabel(int top, int left, string text)
+        private void registerButton_Click_1(object sender, EventArgs e)
         {
-            System.Windows.Forms.Label label = new System.Windows.Forms.Label();
-            this.Controls.Add(label);
-            label.Top = top;
-            label.Left = left == 0 ? (this.Width-label.Width)/2 : left;
-            label.Text = text;
-            return label;
+            loginButton.Dispose();
+            registerButton.Dispose();
+            panelService.AddNewLabel(10, 10, "Podaj dane:", this);
+            loginBox = panelService.AddNewTextBox(40, 0, "Login", this);
+            passwordBox = panelService.AddNewTextBox(70, 0, "Haslo", this);
+            subjectBox = panelService.AddNewComboBox(100, 0, "hehe", this);
+            confirmButton = panelService.AddNewButton(130, 0, "Zarejestruj", this);
         }
 
-        public System.Windows.Forms.TextBox AddNewTextBox(int top, int left, string text)
+        public void confirmButton_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.TextBox box = new System.Windows.Forms.TextBox();
-            this.Controls.Add(box);
-            box.Top = top;
-            box.Left = left == 0 ? (this.Width - box.Width) / 2 : left;
-            box.Text = text;
-            return box;
-        }
 
-        public System.Windows.Forms.Button AddNewButton(int top, int left, string text)
-        {
-            var button = new System.Windows.Forms.Button();
-            button.Top = top;
-            button.Left = left == 0 ? (this.Width - button.Width) / 2 : left;
-            button.Text = text;
-            return button;
+            if (confirmButton.Text == "Zaloguj")
+            {
+                if (authService.Login(loginBox.Text, passwordBox.Text) == null)
+                {
+                    MessageBox.Show("Nie udało się zalogować");
+                    var a = typeof(LibrusPanel);
+                    navigationService.Navigate<RegisterOrLogin, LibrusPanel>(this, typeof(LibrusPanel),true);
+                }
+                else
+                {
+                    MessageBox.Show("Pomyślnie zalogowano");
+                   
+                    navigationService.Navigate<RegisterOrLogin, LibrusPanel>(this, typeof(LibrusPanel), hideCurrent: true);
+                }
+            }
+            else
+            {
+                if (authService.Register(loginBox.Text, passwordBox.Text, subjectBox.Text))
+                {
+                    MessageBox.Show("Pomyślnie zarejestrowano");
+
+                }
+                else
+                {
+                    MessageBox.Show("Nie udało się zarejestrować");
+                }
+            }
         }
 
     }

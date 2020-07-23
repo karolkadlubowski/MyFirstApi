@@ -5,7 +5,7 @@ namespace StudentManager.Services
 {
     public interface INavigationService
     {
-        void Navigate<TFrom, TTo>(TFrom fromForm, Type toFormType, bool hideCurrent = false) where TFrom : Form where TTo : Form;
+        void Navigate<TFrom, TTo>(TFrom fromForm, Type toFormType, bool hideCurrent = false) where TFrom : Form where TTo : Form; // dac true
     }
 
     public class NavigationService : INavigationService

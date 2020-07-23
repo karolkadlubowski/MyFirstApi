@@ -1,5 +1,6 @@
 ﻿using Librus.data;
 using Librus.forms;
+using Librus.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,11 @@ namespace Librus
 {
     static class Program
     {
-        /// <summary>
-        /// Główny punkt wejścia dla aplikacji.
-        /// </summary>
+        public static Teacher TeacherLogin { get; set; }
+
         [STAThread]
         static void Main()
-        {
+        {  
             IDatabaseManagement databaseManagement = new DatabaseManagement();
             databaseManagement.InitDatabase();
             Application.EnableVisualStyles();
