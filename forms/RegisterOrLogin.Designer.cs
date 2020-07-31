@@ -50,6 +50,7 @@
             this.registerButton.TabIndex = 1;
             this.registerButton.Text = "Zarejestruj";
             this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // RegisterOrLogin
             // 

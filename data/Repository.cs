@@ -1,9 +1,11 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace Librus.data
 {
@@ -28,5 +30,7 @@ namespace Librus.data
 
         public bool Insert(T entity) =>
             database.Insert(entity) == 1;
+
+        
     }
 }

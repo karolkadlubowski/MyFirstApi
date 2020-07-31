@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using Librus.data;
 using Librus.models;
 using Librus.services;
-using StudentManager.Services;
 
 namespace Librus.forms
 {
@@ -38,7 +37,41 @@ namespace Librus.forms
             confirmButton = panelService.AddNewButton(100, 0, "Zaloguj", this);
         }
 
-        private void registerButton_Click_1(object sender, EventArgs e)
+        
+
+        public void confirmButton_Click(object sender, EventArgs e)
+        {
+
+            if (confirmButton.Text == "Zaloguj")
+            {
+                Teacher leadTeacher = authService.Login(loginBox.Text, passwordBox.Text);
+                if (leadTeacher == null)
+                {
+                    MessageBox.Show("Nie udało się zalogować");
+                    navigationService.Navigate<RegisterOrLogin, RegisterOrLogin>(this, typeof(RegisterOrLogin),true);
+                }
+                else
+                {
+                    MessageBox.Show("Pomyślnie zalogowano");
+                   
+                    navigationService.Navigate<RegisterOrLogin, LibrusPanel>(this, typeof(LibrusPanel),leadTeacher, hideCurrent: true);
+                }
+            }
+            else
+            {
+                if (authService.Register(loginBox.Text, passwordBox.Text, subjectBox.Text))
+                {
+                    MessageBox.Show("Pomyślnie zarejestrowano");
+                }
+                else
+                {
+                    MessageBox.Show("Nie udało się zarejestrować");
+                }
+                navigationService.Navigate<RegisterOrLogin, RegisterOrLogin>(this, typeof(RegisterOrLogin), true);
+            }
+        }
+
+        private void registerButton_Click(object sender, EventArgs e)
         {
             loginButton.Dispose();
             registerButton.Dispose();
@@ -48,38 +81,5 @@ namespace Librus.forms
             subjectBox = panelService.AddNewComboBox(100, 0, "hehe", this);
             confirmButton = panelService.AddNewButton(130, 0, "Zarejestruj", this);
         }
-
-        public void confirmButton_Click(object sender, EventArgs e)
-        {
-
-            if (confirmButton.Text == "Zaloguj")
-            {
-                if (authService.Login(loginBox.Text, passwordBox.Text) == null)
-                {
-                    MessageBox.Show("Nie udało się zalogować");
-                    var a = typeof(LibrusPanel);
-                    navigationService.Navigate<RegisterOrLogin, LibrusPanel>(this, typeof(LibrusPanel),true);
-                }
-                else
-                {
-                    MessageBox.Show("Pomyślnie zalogowano");
-                   
-                    navigationService.Navigate<RegisterOrLogin, LibrusPanel>(this, typeof(LibrusPanel), hideCurrent: true);
-                }
-            }
-            else
-            {
-                if (authService.Register(loginBox.Text, passwordBox.Text, subjectBox.Text))
-                {
-                    MessageBox.Show("Pomyślnie zarejestrowano");
-
-                }
-                else
-                {
-                    MessageBox.Show("Nie udało się zarejestrować");
-                }
-            }
-        }
-
     }
 }
