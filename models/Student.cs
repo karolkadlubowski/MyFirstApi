@@ -2,7 +2,7 @@
 
 namespace Librus.models
 {
-    [Table("Subjects")]
+    [Table("Students")]
     public class Student
     {
         public Student()
