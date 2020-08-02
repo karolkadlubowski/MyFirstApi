@@ -5,9 +5,7 @@ namespace Librus.models
     [Table("Students")]
     public class Student
     {
-        public Student()
-        {
-        }
+        public Student(){}
 
         public Student(string name, string surname, int subjectId)
         {

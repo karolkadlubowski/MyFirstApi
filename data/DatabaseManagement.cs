@@ -21,6 +21,8 @@ namespace Librus.data
             database.CreateTable<Teacher>();
             database.CreateTable<Subject>();
             database.CreateTable<Student>();
+            database.CreateTable<StudentSubject>();
+            database.CreateTable<GradeStudentSubject>();
             if(database.SubjectRepository.GetAll().ToList().Count==0)
             {
                 var subjects = new List<Subject>()

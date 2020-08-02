@@ -10,9 +10,7 @@ namespace Librus.models
     [Table("Teachers")]
     public class Teacher
     {
-        public Teacher()
-        {
-        }
+        public Teacher(){}
 
         public Teacher(string login, string password, int subjectId)
         {

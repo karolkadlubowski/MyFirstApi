@@ -81,6 +81,12 @@
     <Compile Include="data\Database.cs" />
     <Compile Include="data\DatabaseManagement.cs" />
     <Compile Include="data\Repository.cs" />
+    <Compile Include="forms\AddExistingStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\AddExistingStudent.Designer.cs">
+      <DependentUpon>AddExistingStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,7 @@
     <Compile Include="forms\RegisterOrLogin.Designer.cs">
       <DependentUpon>RegisterOrLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="models\GradeStudentSubject.cs" />
     <Compile Include="models\Student.cs" />
     <Compile Include="models\StudentSubject.cs" />
     <Compile Include="models\Subject.cs" />
@@ -109,6 +116,9 @@
     <Compile Include="services\PanelService.cs" />
     <Compile Include="services\NavigationService.cs" />
     <Compile Include="services\TeacherService.cs" />
+    <EmbeddedResource Include="forms\AddExistingStudent.resx">
+      <DependentUpon>AddExistingStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>

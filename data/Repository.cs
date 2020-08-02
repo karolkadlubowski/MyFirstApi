@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -14,6 +15,10 @@ namespace Librus.data
         IEnumerable<T> GetAll();
 
         bool Insert(T entity);
+
+        IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate);
+
+        bool Delete(T entity);
     }
 
     public class Repository<T> : IRepository<T> where T : class, new()
@@ -31,6 +36,10 @@ namespace Librus.data
         public bool Insert(T entity) =>
             database.Insert(entity) == 1;
 
-        
+        public IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate)
+            => database.Table<T>().Where(predicate).ToList();
+
+        public bool Delete(T entity)
+            => database.Delete(entity) == 1;
     }
 }

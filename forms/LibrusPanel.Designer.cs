@@ -33,6 +33,8 @@
             this.AddStudentButton = new System.Windows.Forms.Button();
             this.AddGradeButton = new System.Windows.Forms.Button();
             this.AddToCourseButton = new System.Windows.Forms.Button();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.DeleteStudentButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,12 +84,34 @@
             this.AddToCourseButton.TabIndex = 4;
             this.AddToCourseButton.Text = "Dodaj do kursu";
             this.AddToCourseButton.UseVisualStyleBackColor = true;
+            this.AddToCourseButton.Click += new System.EventHandler(this.AddToCourseButton_Click);
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Location = new System.Drawing.Point(411, 98);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(75, 23);
+            this.RefreshButton.TabIndex = 5;
+            this.RefreshButton.Text = "Odśwież";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // DeleteStudentButton
+            // 
+            this.DeleteStudentButton.Location = new System.Drawing.Point(206, 12);
+            this.DeleteStudentButton.Name = "DeleteStudentButton";
+            this.DeleteStudentButton.Size = new System.Drawing.Size(126, 23);
+            this.DeleteStudentButton.TabIndex = 7;
+            this.DeleteStudentButton.Text = "Usuń studenta";
+            this.DeleteStudentButton.UseVisualStyleBackColor = true;
             // 
             // LibrusPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 450);
+            this.Controls.Add(this.DeleteStudentButton);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.AddToCourseButton);
             this.Controls.Add(this.AddGradeButton);
             this.Controls.Add(this.AddStudentButton);
@@ -108,5 +132,7 @@
         private System.Windows.Forms.Button AddStudentButton;
         private System.Windows.Forms.Button AddGradeButton;
         private System.Windows.Forms.Button AddToCourseButton;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.Button DeleteStudentButton;
     }
 }

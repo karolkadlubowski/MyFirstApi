@@ -38,3 +38,4 @@ D:\Studia\Projekty\librus\obj\Debug\Librus.exe
 D:\Studia\Projekty\librus\obj\Debug\Librus.pdb
 D:\Studia\Projekty\librus\obj\Debug\Librus.forms.LibrusPanel.resources
 D:\Studia\Projekty\librus\obj\Debug\Librus.forms.AddStudent.resources
+D:\Studia\Projekty\librus\obj\Debug\Librus.forms.AddExistingStudent.resources

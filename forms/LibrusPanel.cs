@@ -23,12 +23,22 @@ namespace Librus.forms
             this.navigationService = new NavigationService();   
             InitializeComponent();
             LeadTeacherLabel.Text = leadTeacher.Login;
-            StudentsGrid.DataSource = teacherService.Teachers;
+            StudentsGrid.DataSource = teacherService.Students;
         }
 
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
             navigationService.Navigate<LibrusPanel, AddStudent>(this, typeof(AddStudent),this.teacherService.LeadTeacher);
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            navigationService.Navigate<LibrusPanel, LibrusPanel>(this, typeof(LibrusPanel), this.teacherService.LeadTeacher,true);
+        }
+
+        private void AddToCourseButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
