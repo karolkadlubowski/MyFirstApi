@@ -38,7 +38,7 @@ namespace Librus.forms
 
         private void AddToCourseButton_Click(object sender, EventArgs e)
         {
-
+            navigationService.Navigate<LibrusPanel, AddExistingStudent>(this, typeof(AddExistingStudent), teacherService);
         }
     }
 }

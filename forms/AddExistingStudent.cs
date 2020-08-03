@@ -1,4 +1,6 @@
 ﻿using Librus.data;
+using Librus.models;
+using Librus.services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +15,28 @@ namespace Librus.forms
 {
     public partial class AddExistingStudent : Form
     {
-        public AddExistingStudent()
+        public ITeacherService TeacherService { get; set; }
+
+        public AddExistingStudent(TeacherService leadTeacher)
         {
-            this.Database = new Database();
+            this.TeacherService = leadTeacher;
+            this.database = new Database();
+            this.StudentsList = database.StudentRepository.GetAll().ToList();
             InitializeComponent();
-            StudentComboBox.Items=
+            var studentsCombo = this.StudentsList.Select(student => student.Name + " " + student.Surname);
+            StudentComboBox.Items.AddRange(studentsCombo.Cast<object>().ToArray());
         }
 
-        private IDatabase Database { get; }
+        private IDatabase database { get; }
+
+        private List<Student> StudentsList {get;set;}
+
+        private void AddExistingStudentButton_Click(object sender, EventArgs e)
+        {
+            if (TeacherService.AddExistingStudent(StudentsList[StudentComboBox.SelectedIndex], TeacherService.LeadTeacher.SubjectId))
+                MessageBox.Show("Pomyslnie dodano");
+            else
+                MessageBox.Show("Nie udalo sie dodac");
+        }
     }
 }

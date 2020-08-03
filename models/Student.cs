@@ -7,11 +7,10 @@ namespace Librus.models
     {
         public Student(){}
 
-        public Student(string name, string surname, int subjectId)
+        public Student(string name, string surname)
         {
             Name = name;
             Surname = surname;
-            SubjectId = subjectId;
         }
 
         [PrimaryKey, AutoIncrement]
@@ -20,7 +19,5 @@ namespace Librus.models
         public string Name { get; set; }
 
         public string Surname { get; set; }
-
-        public int SubjectId { get; set; }
     }
 }

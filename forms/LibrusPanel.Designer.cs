@@ -35,6 +35,8 @@
             this.AddToCourseButton = new System.Windows.Forms.Button();
             this.RefreshButton = new System.Windows.Forms.Button();
             this.DeleteStudentButton = new System.Windows.Forms.Button();
+            this.DeleteGradeButton = new System.Windows.Forms.Button();
+            this.LogoutButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,11 +53,11 @@
             // LeadTeacherLabel
             // 
             this.LeadTeacherLabel.AutoSize = true;
-            this.LeadTeacherLabel.Location = new System.Drawing.Point(421, 13);
+            this.LeadTeacherLabel.Location = new System.Drawing.Point(408, 13);
             this.LeadTeacherLabel.Name = "LeadTeacherLabel";
-            this.LeadTeacherLabel.Size = new System.Drawing.Size(46, 17);
+            this.LeadTeacherLabel.Size = new System.Drawing.Size(78, 17);
             this.LeadTeacherLabel.TabIndex = 1;
-            this.LeadTeacherLabel.Text = "label1";
+            this.LeadTeacherLabel.Text = "Użytkownik";
             // 
             // AddStudentButton
             // 
@@ -69,7 +71,7 @@
             // 
             // AddGradeButton
             // 
-            this.AddGradeButton.Location = new System.Drawing.Point(34, 54);
+            this.AddGradeButton.Location = new System.Drawing.Point(34, 98);
             this.AddGradeButton.Name = "AddGradeButton";
             this.AddGradeButton.Size = new System.Drawing.Size(117, 23);
             this.AddGradeButton.TabIndex = 3;
@@ -78,7 +80,7 @@
             // 
             // AddToCourseButton
             // 
-            this.AddToCourseButton.Location = new System.Drawing.Point(34, 98);
+            this.AddToCourseButton.Location = new System.Drawing.Point(34, 54);
             this.AddToCourseButton.Name = "AddToCourseButton";
             this.AddToCourseButton.Size = new System.Drawing.Size(117, 23);
             this.AddToCourseButton.TabIndex = 4;
@@ -105,11 +107,31 @@
             this.DeleteStudentButton.Text = "Usuń studenta";
             this.DeleteStudentButton.UseVisualStyleBackColor = true;
             // 
+            // DeleteGradeButton
+            // 
+            this.DeleteGradeButton.Location = new System.Drawing.Point(206, 98);
+            this.DeleteGradeButton.Name = "DeleteGradeButton";
+            this.DeleteGradeButton.Size = new System.Drawing.Size(126, 23);
+            this.DeleteGradeButton.TabIndex = 8;
+            this.DeleteGradeButton.Text = "Usuń ocenę";
+            this.DeleteGradeButton.UseVisualStyleBackColor = true;
+            // 
+            // LogoutButton
+            // 
+            this.LogoutButton.Location = new System.Drawing.Point(410, 54);
+            this.LogoutButton.Name = "LogoutButton";
+            this.LogoutButton.Size = new System.Drawing.Size(75, 23);
+            this.LogoutButton.TabIndex = 9;
+            this.LogoutButton.Text = "Wyloguj";
+            this.LogoutButton.UseVisualStyleBackColor = true;
+            // 
             // LibrusPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 450);
+            this.Controls.Add(this.LogoutButton);
+            this.Controls.Add(this.DeleteGradeButton);
             this.Controls.Add(this.DeleteStudentButton);
             this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.AddToCourseButton);
@@ -134,5 +156,7 @@
         private System.Windows.Forms.Button AddToCourseButton;
         private System.Windows.Forms.Button RefreshButton;
         private System.Windows.Forms.Button DeleteStudentButton;
+        private System.Windows.Forms.Button DeleteGradeButton;
+        private System.Windows.Forms.Button LogoutButton;
     }
 }

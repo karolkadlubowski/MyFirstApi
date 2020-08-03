@@ -12,6 +12,8 @@ namespace Librus.data
 {
     public interface IRepository<T> where T : class, new()
     {
+        T Get(int id);
+
         IEnumerable<T> GetAll();
 
         bool Insert(T entity);
@@ -29,6 +31,9 @@ namespace Librus.data
         {
             this.database = database;
         }
+
+        public T Get(int id) =>
+            database.Find<T>(id);
 
         public IEnumerable<T> GetAll() =>
             database.Table<T>().AsEnumerable();

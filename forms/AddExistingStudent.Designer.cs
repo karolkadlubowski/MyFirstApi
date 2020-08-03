@@ -48,6 +48,7 @@
             this.AddExistingStudentButton.TabIndex = 1;
             this.AddExistingStudentButton.Text = "Dodaj studenta do kursu";
             this.AddExistingStudentButton.UseVisualStyleBackColor = true;
+            this.AddExistingStudentButton.Click += new System.EventHandler(this.AddExistingStudentButton_Click);
             // 
             // AddExistingStudent
             // 

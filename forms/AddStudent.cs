@@ -24,7 +24,7 @@ namespace Librus.forms
 
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
-            if (TeacherService.AddStudent(StudentNameTextBox.Text, StudentSurnameTextBox.Text, TeacherService.LeadTeacher.SubjectId))
+            if (TeacherService.AddStudent(StudentNameTextBox.Text, StudentSurnameTextBox.Text))
                 MessageBox.Show("Pomyślnie dodano");
             else
                 MessageBox.Show("Nie udało się dodać");
