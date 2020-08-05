@@ -53,7 +53,7 @@
             // LeadTeacherLabel
             // 
             this.LeadTeacherLabel.AutoSize = true;
-            this.LeadTeacherLabel.Location = new System.Drawing.Point(408, 13);
+            this.LeadTeacherLabel.Location = new System.Drawing.Point(407, 15);
             this.LeadTeacherLabel.Name = "LeadTeacherLabel";
             this.LeadTeacherLabel.Size = new System.Drawing.Size(78, 17);
             this.LeadTeacherLabel.TabIndex = 1;

@@ -51,5 +51,10 @@ namespace Librus.services
             }
             return false;
         }
+
+        public bool DeleteStudentFromTheCourse(Student student, int subjectId)
+            => database.StudentSubjectRepository.DeleteRange(database.StudentSubjectRepository.GetWhere(studentSubject => studentSubject.StudentId == student.Id && studentSubject.SubjectId == subjectId).ToList());
+        
+
     }
 }

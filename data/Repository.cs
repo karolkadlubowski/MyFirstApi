@@ -21,6 +21,8 @@ namespace Librus.data
         IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate);
 
         bool Delete(T entity);
+        
+        bool DeleteRange(List<T> entities);
     }
 
     public class Repository<T> : IRepository<T> where T : class, new()
@@ -46,5 +48,16 @@ namespace Librus.data
 
         public bool Delete(T entity)
             => database.Delete(entity) == 1;
+
+        public bool DeleteRange(List<T> entities)
+        {
+            int count = entities.Count();
+            bool check = true;
+            for (int i = 0; i < count; i++)
+                if (database.Delete(entities[i])!=1)
+                    check = false;
+            return check;
+
+        }
     }
 }
