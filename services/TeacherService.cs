@@ -13,6 +13,10 @@ namespace Librus.services
         bool AddStudent(string name, string surname);
 
         bool AddExistingStudent(Student student, int subjectId);
+
+        bool DeleteStudentFromTheCourse(Student student, int subjectId);
+
+        bool DeleteStudentDefenitely(Student student);
     }
 
     public class TeacherService : ITeacherService
@@ -55,6 +59,12 @@ namespace Librus.services
         public bool DeleteStudentFromTheCourse(Student student, int subjectId)
             => database.StudentSubjectRepository.DeleteRange(database.StudentSubjectRepository.GetWhere(studentSubject => studentSubject.StudentId == student.Id && studentSubject.SubjectId == subjectId).ToList());
         
+        public bool DeleteStudentDefenitely(Student student)
+        {
+            bool isDeletedFromStudentSubject = database.StudentSubjectRepository.DeleteRange(database.StudentSubjectRepository.GetWhere(ss => ss.StudentId == student.Id).ToList());
+            bool isDeletedFromStudents = database.StudentRepository.Delete(student);
+            return isDeletedFromStudents && isDeletedFromStudentSubject;
+        }
 
     }
 }

@@ -47,9 +47,9 @@
             // StudentsComboBox
             // 
             this.StudentsComboBox.FormattingEnabled = true;
-            this.StudentsComboBox.Location = new System.Drawing.Point(46, 46);
+            this.StudentsComboBox.Location = new System.Drawing.Point(12, 46);
             this.StudentsComboBox.Name = "StudentsComboBox";
-            this.StudentsComboBox.Size = new System.Drawing.Size(121, 24);
+            this.StudentsComboBox.Size = new System.Drawing.Size(186, 24);
             this.StudentsComboBox.TabIndex = 1;
             // 
             // KickStudentCheckBox

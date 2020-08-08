@@ -17,7 +17,8 @@ namespace Librus.forms
         {
             this.teacherService = teacherService;
             InitializeComponent();
-            StudentsComboBox.Items.AddRange(teacherService.Students.Cast<object>().ToArray());
+            var students = teacherService.Students.Select(student => student.Name + " " + student.Surname);
+            StudentsComboBox.Items.AddRange(students.Cast<object>().ToArray());
         }
 
         private TeacherService teacherService { get; }
@@ -25,7 +26,19 @@ namespace Librus.forms
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             if (KickFromCourseCheckBox.Checked && StudentsComboBox.Text.Count() != 0)
-                teacherService.DeleteStudentFromTheCourse(teacherService.Students[StudentsComboBox.SelectedIndex], teacherService.LeadTeacher.SubjectId);
+                if (teacherService.DeleteStudentFromTheCourse(teacherService.Students[StudentsComboBox.SelectedIndex], teacherService.LeadTeacher.SubjectId))
+                    MessageBox.Show("Pomyślnie usunięto studenta z kursu");
+                else
+                    MessageBox.Show("Nie udało się usunąć studenta z kursu");
+
+            else if (KickStudentCheckBox.Checked && StudentsComboBox.Text.Count() != 0)
+                if (teacherService.DeleteStudentDefenitely(teacherService.Students[StudentsComboBox.SelectedIndex]))
+                    MessageBox.Show("Anihilacja studenta zakończona");
+                else
+                    MessageBox.Show("Nie udało się wykończyć studenta");
+
+            else
+                MessageBox.Show("Prosze zaznaczyć odpowiednie pola");
         }
     }
 }

@@ -52,11 +52,11 @@ namespace Librus.data
         public bool DeleteRange(List<T> entities)
         {
             int count = entities.Count();
-            bool check = true;
+            bool IsDeletedEverywhere = true;
             for (int i = 0; i < count; i++)
                 if (database.Delete(entities[i])!=1)
-                    check = false;
-            return check;
+                    IsDeletedEverywhere = false;
+            return IsDeletedEverywhere;
 
         }
     }

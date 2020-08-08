@@ -23,6 +23,8 @@ namespace Librus.data
         IRepository<StudentSubject> StudentSubjectRepository { get; }
 
         IRepository<GradeStudentSubject> GradeStudentSubjectRepository { get; }
+
+        IRepository<Grade> GradeRepository { get; }
     }
 
     public class Database : IDatabase
@@ -76,6 +78,12 @@ namespace Librus.data
             get => gradeStudentSubjectRepository ?? new Repository<GradeStudentSubject>(connection);
         }
 
+        private IRepository<Grade> gradeRepository;
+
+        public IRepository<Grade> GradeRepository
+        {
+            get => gradeRepository ?? new Repository<Grade>(connection);
+        }
 
     }
 }

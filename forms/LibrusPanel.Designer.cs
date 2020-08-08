@@ -106,6 +106,7 @@
             this.DeleteStudentButton.TabIndex = 7;
             this.DeleteStudentButton.Text = "Usuń studenta";
             this.DeleteStudentButton.UseVisualStyleBackColor = true;
+            this.DeleteStudentButton.Click += new System.EventHandler(this.DeleteStudentButton_Click);
             // 
             // DeleteGradeButton
             // 
