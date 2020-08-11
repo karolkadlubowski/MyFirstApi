@@ -9,6 +9,7 @@ namespace Librus.services
     {
         Teacher LeadTeacher { get; }
         List<Student> Students { get; set; }
+        List<Grade> Grades { get; set; }
 
         bool AddStudent(string name, string surname);
 
@@ -17,6 +18,8 @@ namespace Librus.services
         bool DeleteStudentFromTheCourse(Student student, int subjectId);
 
         bool DeleteStudentDefenitely(Student student);
+
+        bool AddGradeRange(int gradeId, int[] studentsIndexes, int subjectId, string gradeDescription);
     }
 
     public class TeacherService : ITeacherService
@@ -29,10 +32,12 @@ namespace Librus.services
             var studentSubjectList = this.database.StudentSubjectRepository.GetWhere(s => s.SubjectId == LeadTeacher.SubjectId);
             foreach (StudentSubject studentSubject in studentSubjectList)
                 Students.Add(database.StudentRepository.Get(studentSubject.StudentId));
+            Grades = database.GradeRepository.GetAll().ToList();
         }
 
         public Teacher LeadTeacher { get; }
         public List<Student> Students { get; set; }
+        public List<Grade> Grades { get; set; }
         private IDatabase database { get;}
 
         public bool AddStudent(string name, string surname)
@@ -64,6 +69,17 @@ namespace Librus.services
             bool isDeletedFromStudentSubject = database.StudentSubjectRepository.DeleteRange(database.StudentSubjectRepository.GetWhere(ss => ss.StudentId == student.Id).ToList());
             bool isDeletedFromStudents = database.StudentRepository.Delete(student);
             return isDeletedFromStudents && isDeletedFromStudentSubject;
+        }
+
+        private bool AddGrade(int gradeId, int studentId, int subjectId, string gradeDescription)
+            => database.GradeStudentSubjectRepository.Insert(new GradeStudentSubject(gradeId, studentId, subjectId, gradeDescription));
+
+        public bool AddGradeRange(int gradeId, int[] studentsIndexes, int subjectId, string gradeDescription)
+        {
+            bool IsAddingCompleted = true;
+            foreach (int studentId in studentsIndexes)
+                IsAddingCompleted = AddGrade(gradeId, studentId, subjectId, gradeDescription);
+            return IsAddingCompleted;
         }
 
     }

@@ -60,6 +60,7 @@
             this.markAllCheckBox.TabIndex = 2;
             this.markAllCheckBox.Text = "Zaznacz wszystkich";
             this.markAllCheckBox.UseVisualStyleBackColor = true;
+            this.markAllCheckBox.CheckedChanged += new System.EventHandler(this.markAllCheckBox_CheckedChanged);
             // 
             // addGradeButton
             // 
@@ -69,6 +70,7 @@
             this.addGradeButton.TabIndex = 3;
             this.addGradeButton.Text = "Dodaj ocenę";
             this.addGradeButton.UseVisualStyleBackColor = true;
+            this.addGradeButton.Click += new System.EventHandler(this.addGradeButton_Click);
             // 
             // descriptionTextBox
             // 

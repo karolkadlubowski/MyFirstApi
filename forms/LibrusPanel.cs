@@ -45,5 +45,10 @@ namespace Librus.forms
         {
             navigationService.Navigate<LibrusPanel, DeleteStudentForm>(this, typeof(DeleteStudentForm), teacherService);
         }
+
+        private void AddGradeButton_Click(object sender, EventArgs e)
+        {
+            navigationService.Navigate<LibrusPanel, AddGradeForm>(this, typeof(AddGradeForm), teacherService);
+        }
     }
 }

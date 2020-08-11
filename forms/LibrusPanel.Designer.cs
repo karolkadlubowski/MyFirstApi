@@ -77,6 +77,7 @@
             this.AddGradeButton.TabIndex = 3;
             this.AddGradeButton.Text = "Dodaj ocenę";
             this.AddGradeButton.UseVisualStyleBackColor = true;
+            this.AddGradeButton.Click += new System.EventHandler(this.AddGradeButton_Click);
             // 
             // AddToCourseButton
             // 
