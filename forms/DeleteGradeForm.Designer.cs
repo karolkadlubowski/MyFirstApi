@@ -42,6 +42,7 @@
             this.deleteGradeButton.TabIndex = 1;
             this.deleteGradeButton.Text = "Usuń";
             this.deleteGradeButton.UseVisualStyleBackColor = true;
+            this.deleteGradeButton.Click += new System.EventHandler(this.deleteGradeButton_Click);
             // 
             // studentComboBox
             // 
@@ -69,6 +70,7 @@
             this.markAllCheckBox.TabIndex = 4;
             this.markAllCheckBox.Text = "Zaznacz wszystkie";
             this.markAllCheckBox.UseVisualStyleBackColor = true;
+            this.markAllCheckBox.CheckedChanged += new System.EventHandler(this.markAllCheckBox_CheckedChanged);
             // 
             // DeleteGradeForm
             // 

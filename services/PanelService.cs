@@ -15,6 +15,8 @@ namespace Librus.services
         TextBox AddNewTextBox(int top, int left, string text, RegisterOrLogin form);
         Button AddNewButton(int top, int left, string text, RegisterOrLogin form);
         ComboBox AddNewComboBox(int top, int left, string text, RegisterOrLogin form);
+        void RemoveText(TextBox textBox);
+        void AddText(TextBox textBox, string placeholder);
     }
 
     public class PanelService : IPanelService
@@ -42,6 +44,8 @@ namespace Librus.services
             box.Top = top;
             box.Left = left == 0 ? (form.Width - box.Width) / 2 : left;
             box.Text = text;
+            box.GotFocus += (s, eve) => this.RemoveText(box);
+            box.LostFocus += (s, eve) => this.AddText(box, text);
             return box;
         }
 
@@ -64,6 +68,17 @@ namespace Librus.services
             var subjects = database.SubjectRepository.GetAll().Select(s=>s.Name).ToList();
             comboBox.Items.AddRange(subjects.Cast<object>().ToArray());
             return comboBox;
+        }
+
+        public void RemoveText(TextBox textBox)
+        {
+            textBox.Text = "";
+        }
+
+        public void AddText( TextBox textBox,string placeholder)
+        {
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+                textBox.Text = placeholder;
         }
     }
 }

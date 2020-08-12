@@ -20,6 +20,8 @@ namespace Librus.services
         bool DeleteStudentDefenitely(Student student);
 
         bool AddGradeRange(int gradeId, int[] studentsIndexes, int subjectId, string gradeDescription);
+
+        bool DeleteGrade(List<GradeStudentSubject> gSSToDelete);
     }
 
     public class TeacherService : ITeacherService
@@ -83,7 +85,8 @@ namespace Librus.services
             return IsAddingCompleted;
         }
 
-        
+        public bool DeleteGrade(List<GradeStudentSubject> gSSToDelete)
+            => database.GradeStudentSubjectRepository.DeleteRange(gSSToDelete);
 
     }
 }

@@ -14,12 +14,17 @@ namespace Librus.forms
 {
     public partial class AddStudent : Form
     {
-
+        private PanelService panelService { get; }
         public ITeacherService TeacherService { get; set; }
         public AddStudent(Teacher leadTeacher)
         {
+            panelService = new PanelService();
             this.TeacherService = new TeacherService(leadTeacher);
             InitializeComponent();
+            StudentNameTextBox.GotFocus += (sen, eve) => panelService.RemoveText(StudentNameTextBox);
+            StudentSurnameTextBox.GotFocus += (sen, eve) => panelService.RemoveText(StudentSurnameTextBox);
+            StudentNameTextBox.LostFocus += (sen, eve) => panelService.AddText(StudentNameTextBox, "Imię");
+            StudentSurnameTextBox.LostFocus += (sen, eve) => panelService.AddText(StudentSurnameTextBox, "Nazwisko");
         }
 
         private void AddStudentButton_Click(object sender, EventArgs e)

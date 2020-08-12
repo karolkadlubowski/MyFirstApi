@@ -103,7 +103,7 @@
             // 
             this.DeleteStudentButton.Location = new System.Drawing.Point(206, 12);
             this.DeleteStudentButton.Name = "DeleteStudentButton";
-            this.DeleteStudentButton.Size = new System.Drawing.Size(126, 23);
+            this.DeleteStudentButton.Size = new System.Drawing.Size(146, 23);
             this.DeleteStudentButton.TabIndex = 7;
             this.DeleteStudentButton.Text = "Usuń studenta";
             this.DeleteStudentButton.UseVisualStyleBackColor = true;
@@ -113,9 +113,9 @@
             // 
             this.DeleteGradeButton.Location = new System.Drawing.Point(206, 98);
             this.DeleteGradeButton.Name = "DeleteGradeButton";
-            this.DeleteGradeButton.Size = new System.Drawing.Size(126, 23);
+            this.DeleteGradeButton.Size = new System.Drawing.Size(146, 23);
             this.DeleteGradeButton.TabIndex = 8;
-            this.DeleteGradeButton.Text = "Usuń ocenę";
+            this.DeleteGradeButton.Text = "Zarządzaj ocenami";
             this.DeleteGradeButton.UseVisualStyleBackColor = true;
             this.DeleteGradeButton.Click += new System.EventHandler(this.DeleteGradeButton_Click);
             // 
@@ -127,6 +127,7 @@
             this.LogoutButton.TabIndex = 9;
             this.LogoutButton.Text = "Wyloguj";
             this.LogoutButton.UseVisualStyleBackColor = true;
+            this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // LibrusPanel
             // 

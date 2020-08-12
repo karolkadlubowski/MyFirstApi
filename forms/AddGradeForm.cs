@@ -15,14 +15,18 @@ namespace Librus.forms
     public partial class AddGradeForm : Form
     {
         public TeacherService TeacherService { get; set; }
+        private PanelService panelService { get; set; }
 
         public AddGradeForm(TeacherService teacherService)
         {
+            panelService = new PanelService();
             TeacherService = teacherService;
             InitializeComponent();
             var students = TeacherService.Students.Select(student => student.Name + " " + student.Surname);
             studentsCheckedListBox.Items.AddRange(students.Cast<object>().ToArray());
             gradesComboBox.Items.AddRange(TeacherService.Grades.Select(grade => grade.Value).Cast<object>().ToArray());
+            descriptionTextBox.GotFocus += (s, eve) => panelService.RemoveText(descriptionTextBox);
+            descriptionTextBox.LostFocus += (s, eve) => panelService.AddText(descriptionTextBox, "Dodaj opis");
         }
 
         private void markAllCheckBox_CheckedChanged(object sender, EventArgs e)

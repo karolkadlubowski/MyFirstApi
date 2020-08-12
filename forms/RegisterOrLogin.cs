@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Librus.data;
 using Librus.models;
@@ -26,6 +27,7 @@ namespace Librus.forms
         private TextBox passwordBox { get; set; }
         private Button confirmButton { get; set; }
         private ComboBox subjectBox { get; set; }
+
 
         private void loginButton_Click_1(object sender, EventArgs e)
         {
@@ -80,6 +82,8 @@ namespace Librus.forms
             passwordBox = panelService.AddNewTextBox(70, 0, "Haslo", this);
             subjectBox = panelService.AddNewComboBox(100, 0, "hehe", this);
             confirmButton = panelService.AddNewButton(130, 0, "Zarejestruj", this);
+            /*loginBox.GotFocus += (s, eve) => panelService.RemoveText(loginBox);
+            loginBox.LostFocus += (s, eve) => panelService.AddText(loginBox, "Login");*/
         }
     }
 }
