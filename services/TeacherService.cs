@@ -62,13 +62,14 @@ namespace Librus.services
         }
 
         public bool DeleteStudentFromTheCourse(Student student, int subjectId)
-            => database.StudentSubjectRepository.DeleteRange(database.StudentSubjectRepository.GetWhere(studentSubject => studentSubject.StudentId == student.Id && studentSubject.SubjectId == subjectId).ToList());
+            => database.GradeStudentSubjectRepository.DeleteRange(database.GradeStudentSubjectRepository.GetWhere(gradeStudentSubject => gradeStudentSubject.StudentId==student.Id && gradeStudentSubject.SubjectId==subjectId).ToList()) && database.StudentSubjectRepository.DeleteRange(database.StudentSubjectRepository.GetWhere(studentSubject => studentSubject.StudentId == student.Id && studentSubject.SubjectId == subjectId).ToList());
         
         public bool DeleteStudentDefenitely(Student student)
         {
             bool isDeletedFromStudentSubject = database.StudentSubjectRepository.DeleteRange(database.StudentSubjectRepository.GetWhere(ss => ss.StudentId == student.Id).ToList());
             bool isDeletedFromStudents = database.StudentRepository.Delete(student);
-            return isDeletedFromStudents && isDeletedFromStudentSubject;
+            bool isDeletedFromGrades = database.GradeStudentSubjectRepository.DeleteRange(database.GradeStudentSubjectRepository.GetWhere(gradeStudentSubject => gradeStudentSubject.StudentId == student.Id).ToList());
+            return isDeletedFromStudents && isDeletedFromStudentSubject && isDeletedFromGrades;
         }
 
         private bool AddGrade(int gradeId, int studentId, int subjectId, string gradeDescription)
@@ -81,6 +82,8 @@ namespace Librus.services
                 IsAddingCompleted = AddGrade(gradeId, studentId, subjectId, gradeDescription);
             return IsAddingCompleted;
         }
+
+        
 
     }
 }

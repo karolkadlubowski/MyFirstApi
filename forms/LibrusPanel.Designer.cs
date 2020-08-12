@@ -117,6 +117,7 @@
             this.DeleteGradeButton.TabIndex = 8;
             this.DeleteGradeButton.Text = "Usuń ocenę";
             this.DeleteGradeButton.UseVisualStyleBackColor = true;
+            this.DeleteGradeButton.Click += new System.EventHandler(this.DeleteGradeButton_Click);
             // 
             // LogoutButton
             // 

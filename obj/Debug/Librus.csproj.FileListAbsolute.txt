@@ -41,3 +41,4 @@ D:\Studia\Projekty\librus\obj\Debug\Librus.forms.AddStudent.resources
 D:\Studia\Projekty\librus\obj\Debug\Librus.forms.AddExistingStudent.resources
 D:\Studia\Projekty\librus\obj\Debug\Librus.forms.DeleteStudentForm.resources
 D:\Studia\Projekty\librus\obj\Debug\Librus.forms.AddGradeForm.resources
+D:\Studia\Projekty\librus\obj\Debug\Librus.forms.DeleteGradeForm.resources
